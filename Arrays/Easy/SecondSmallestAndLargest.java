@@ -10,29 +10,24 @@ public class SecondSmallestAndLargest{
             arr[i]=s.nextInt();
         }
 
-        Arrays.sort(arr);
-        //second smallest
-        int i=1;
-        int ss = -1;
-        while(i<n){
-            if(arr[i]!=arr[i-1]){
-                ss=arr[i];
-                break;
+        int smallest = Integer.MAX_VALUE;
+        int largest = Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            if(arr[i]<smallest){
+                smallest=arr[i];
             }
-            else{
-                i++;
+            if(arr[i]>largest){
+                largest=arr[i];
             }
         }
-
-        //second largest
-        int sl = -1;
-        while(n>1){
-            if(arr[n-1]!=arr[n-2]){
-                sl=arr[n-2];
-                break;
+        int ss = Integer.MAX_VALUE;
+        int sl = Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            if(arr[i]<ss && arr[i]!=smallest){
+                ss=arr[i];
             }
-            else{
-                n--;
+            if(arr[i]>sl && arr[i]!=largest){
+                sl=arr[i];
             }
         }
         System.out.println("Second Smallest : "+ss+" Second Largest : "+sl);
